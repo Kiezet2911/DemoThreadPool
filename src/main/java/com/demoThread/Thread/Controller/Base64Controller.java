@@ -1,8 +1,6 @@
 package com.demoThread.Thread.Controller;
 
-import java.util.ArrayList;
 import java.util.List;
-
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutionException;
 
@@ -27,8 +25,6 @@ public class Base64Controller {
 	@PostMapping(consumes = { MediaType.MULTIPART_FORM_DATA_VALUE })
 	public String insert(@RequestParam(value = "photo") MultipartFile[] photo)
 			throws InterruptedException, ExecutionException {
-		CompletableFuture<Base64Entity> future = null;
-		List<Base64Entity> list = new ArrayList<Base64Entity>();
 		for (MultipartFile file : photo) {
 
 			service.insert(file);
