@@ -31,7 +31,7 @@ public class StudentController {
 		try {
 
 			for (int i = 0; i < count; i++) {
-				service.insert(entity, 1);
+				service.insert(entity, i);
 			}
 			return "Done";
 		} catch (Exception e) {
