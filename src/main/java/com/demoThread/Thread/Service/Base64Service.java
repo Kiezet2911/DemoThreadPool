@@ -1,14 +1,18 @@
 package com.demoThread.Thread.Service;
 
 import java.util.List;
+import java.util.concurrent.CompletableFuture;
 
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.demoThread.Thread.Entity.Base64Entity;
 
 public interface Base64Service {
 
-	List<Base64Entity> findAll(int i);
+	@Async
+	CompletableFuture<List<Base64Entity>> findAll();
 
-	Base64Entity insert(MultipartFile multipartFile,int i);
+	@Async
+	CompletableFuture<Base64Entity> insert(MultipartFile multipartFile);
 }
