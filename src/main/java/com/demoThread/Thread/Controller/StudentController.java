@@ -31,10 +31,11 @@ public class StudentController {
 		try {
 
 			for (int i = 0; i < count; i++) {
-				service.insert(entity, i);
+				service.insert(entity, 1);
 			}
 			return "Done";
 		} catch (Exception e) {
+
 			return e.toString();
 		}
 	}

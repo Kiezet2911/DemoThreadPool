@@ -17,7 +17,7 @@ import com.demoThread.Thread.Entity.Base64Entity;
 import com.demoThread.Thread.Service.Base64Service;
 
 @RestController
-@RequestMapping("/sv")
+@RequestMapping("/base64")
 public class Base64Controller {
 	@Autowired
 	private Base64Service service;

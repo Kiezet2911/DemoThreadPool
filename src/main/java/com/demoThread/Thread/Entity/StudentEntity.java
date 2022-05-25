@@ -8,7 +8,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "Base64")
+@Table(name = "student")
 public class StudentEntity {
 
 	@Id
@@ -19,11 +19,11 @@ public class StudentEntity {
 	@Column(name = "name")
 	private String name;
 	@Column(name = "age")
-	private String age;
+	private int age;
 	@Column(name = "address")
 	private String address;
 
-	public StudentEntity(Long id, String name, String age, String address) {
+	public StudentEntity(Long id, String name, int age, String address) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -51,11 +51,11 @@ public class StudentEntity {
 		this.name = name;
 	}
 
-	public String getAge() {
+	public int getAge() {
 		return age;
 	}
 
-	public void setAge(String age) {
+	public void setAge(int age) {
 		this.age = age;
 	}
 

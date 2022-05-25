@@ -17,7 +17,7 @@ public class ThreadConfig {
 		executor.setCorePoolSize(2);
 		executor.setMaxPoolSize(5);
 		executor.setQueueCapacity(10);
-		executor.setKeepAliveSeconds(9000000);
+		executor.setKeepAliveSeconds(Integer.MAX_VALUE);
 		executor.setThreadNamePrefix("baseThread-");
 		executor.initialize();
 		return executor;

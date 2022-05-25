@@ -34,8 +34,11 @@ public class StudentImpl implements StudentService {
 		try {
 
 			System.out.println(Thread.currentThread().getName() + " Starting insert process " + i);
-
-			StudentEntity result = reponsitory.save(entity);
+			StudentEntity sv = new StudentEntity();
+			sv.setName(entity.getName());
+			sv.setAge(entity.getAge());
+			sv.setAddress(entity.getAddress());
+			StudentEntity result = reponsitory.save(sv);
 
 			System.out.println(Thread.currentThread().getName() + " Finished insert process " + i);
 			return CompletableFuture.completedFuture(result);
