@@ -32,7 +32,7 @@ public class Base64Impl implements Base64Service {
 	@Async
 	public CompletableFuture<Base64Entity> insert(MultipartFile multipartFile) {
 		try {
-			System.out.println(Thread.currentThread().getName() + " Starting insert process " );
+			System.out.println(Thread.currentThread().getName() + " Starting insert process ");
 
 			Base64Entity entity = new Base64Entity();
 			entity.setbase64(changeimgtobase64(multipartFile));
@@ -41,6 +41,7 @@ public class Base64Impl implements Base64Service {
 			System.out.println(Thread.currentThread().getName() + " Finished insert process ");
 			return CompletableFuture.completedFuture(result);
 		} catch (Exception e) {
+			System.out.println(e);
 			return null;
 		}
 	}
