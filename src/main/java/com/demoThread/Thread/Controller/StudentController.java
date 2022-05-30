@@ -29,7 +29,7 @@ public class StudentController {
 	@PostMapping("/{count}")
 	public String insert2(@PathVariable("count") int count, @RequestBody StudentEntity entity) {
 		try {
-
+			//for theo so count truyen vao
 			for (int i = 0; i < count; i++) {
 				service.insert(entity, i);
 			}

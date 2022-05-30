@@ -21,10 +21,11 @@ public class Base64Impl implements Base64Service {
 
 	@Async
 	public CompletableFuture<List<Base64Entity>> findAll() {
+		//kiem tra thread nao bat dau
 		System.out.println(Thread.currentThread().getName() + " Starting Findall process ");
 
 		List<Base64Entity> result = reponsitory.findAll();
-
+		//kiem tra thread nao ket thuc nhiem vu
 		System.out.println(Thread.currentThread().getName() + " Finished Findall process ");
 		return CompletableFuture.completedFuture(result);
 	}
@@ -33,7 +34,7 @@ public class Base64Impl implements Base64Service {
 	public CompletableFuture<Base64Entity> insert(MultipartFile multipartFile) {
 		try {
 			System.out.println(Thread.currentThread().getName() + " Starting insert process ");
-
+			//new 1 Base64Entity và bat dau chuyen multipartFile(img) sang base64 bang changeimgtobase64
 			Base64Entity entity = new Base64Entity();
 			entity.setbase64(changeimgtobase64(multipartFile));
 			Base64Entity result = reponsitory.save(entity);
@@ -48,8 +49,6 @@ public class Base64Impl implements Base64Service {
 
 	public byte[] changeimgtobase64(MultipartFile photo) throws IOException {
 		byte[] encodedBytes = Base64.getEncoder().encode(photo.getBytes());
-		// System.out.println(encodedBytes);
-
 		return encodedBytes;
 	}
 }

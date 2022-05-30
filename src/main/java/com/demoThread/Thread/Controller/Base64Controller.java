@@ -25,40 +25,13 @@ public class Base64Controller {
 	@PostMapping(consumes = { MediaType.MULTIPART_FORM_DATA_VALUE })
 	public String insert(@RequestParam(value = "photo") MultipartFile[] photo)
 			throws InterruptedException, ExecutionException {
+		//for theo so luong file truyen vao
 		for (MultipartFile file : photo) {
-
 			service.insert(file);
 		}
 
 		return "Done";
 	}
-
-//	@PostMapping("/{count}")
-//	public List<Base64Entity> insert2(@PathVariable("count") int count, @RequestParam(value = "photo") MultipartFile photo)
-//			throws InterruptedException, ExecutionException {
-//		ExecutorService executor = Executors.newFixedThreadPool(5);
-//
-//		Future<List<Base64Entity>> future = null;
-//		List<Base64Entity> list = new ArrayList<Base64Entity>();
-//
-//		for (int i = 0; i < count; i++) {
-//			int id = i;
-//			future = executor.submit(new Callable<List<Base64Entity>>() {
-//
-//				@Override
-//				public List<Base64Entity> call() throws Exception {
-//
-//					list.add(service.insert(photo, id));
-//
-//					return list;
-//				}
-//
-//			});
-//		}
-//		executor.shutdown();
-//
-//		return future.get();
-//	}
 
 	@GetMapping
 	public CompletableFuture<List<Base64Entity>> findAll() throws InterruptedException, ExecutionException {

@@ -1,14 +1,10 @@
 package com.demoThread.Thread.Service.Impl;
 
-import java.io.IOException;
-import java.util.Base64;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
-import org.springframework.web.multipart.MultipartFile;
 import com.demoThread.Thread.Entity.StudentEntity;
 import com.demoThread.Thread.Reponsitory.StudentReponsitory;
 import com.demoThread.Thread.Service.StudentService;
@@ -34,10 +30,12 @@ public class StudentImpl implements StudentService {
 		try {
 
 			System.out.println(Thread.currentThread().getName() + " Starting insert process " + i);
+			//new 1 StudentEntity de khong bi truong hop update
 			StudentEntity sv = new StudentEntity();
 			sv.setName(entity.getName());
 			sv.setAge(entity.getAge());
 			sv.setAddress(entity.getAddress());
+			
 			StudentEntity result = reponsitory.save(sv);
 
 			System.out.println(Thread.currentThread().getName() + " Finished insert process " + i);
@@ -45,10 +43,5 @@ public class StudentImpl implements StudentService {
 		} catch (Exception e) {
 			return null;
 		}
-	}
-
-	public byte[] changeimgtobase64(MultipartFile photo) throws IOException {
-		byte[] encodedBytes = Base64.getEncoder().encode(photo.getBytes());
-		return encodedBytes;
 	}
 }
