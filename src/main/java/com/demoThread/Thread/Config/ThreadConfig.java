@@ -15,15 +15,14 @@ public class ThreadConfig {
 	@Bean(name = "taskExecutor")
 	public Executor taskExecutor() {
 		ThreadPoolTaskExecutor executor = new ThreadPoolTaskExecutor();
-		executor.setCorePoolSize(1);
-		executor.setMaxPoolSize(1);
+		executor.setCorePoolSize(2);
+		executor.setMaxPoolSize(2);
 		executor.setQueueCapacity(1);
 		executor.setKeepAliveSeconds(Integer.MAX_VALUE);
 		executor.setThreadNamePrefix("baseThread-");
 		executor.setRejectedExecutionHandler(new RejectedExecutionHandler() {
 			@Override
-			public void rejectedExecution(Runnable r, ThreadPoolExecutor executor) {
-				System.out.println("Lỗi" + executor.getCompletedTaskCount());
+			public void rejectedExecution(Runnable r, ThreadPoolExecutor executor) {			
 				r.run();
 			}
 		});
